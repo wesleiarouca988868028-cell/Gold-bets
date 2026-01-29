@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GolDeBets – Apostas com as Melhores Odds do Brasil</title>
+  <meta name="description" content="Cadastre-se, ganhe bônus e receba seu Pix rapidamente. Odds atualizadas ao vivo." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="GolDeBets – Apostas com as Melhores Odds do Brasil" />
+  <meta property="og:description" content="Cadastre-se, ganhe bônus e receba seu Pix rapidamente. Odds atualizadas ao vivo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"GolDeBets",
+    "url":"https://example.com",
+    "sameAs": [],
+    "contactPoint":[{"@type":"ContactPoint","contactType":"customer support","telephone":"","email":""}]
+  }
+  </script>
+
+  <!-- Note: Prefer setting CSP via HTTP headers. The example meta below is informational.
+       If you move scripts/styles out to external files, remove 'unsafe-inline' and use nonces/hashes. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https:;">
+
+  <!-- Favicon Bandeira do Brasil (SVG inline as data-uri) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+    <rect width='512' height='512' fill='%2300963f'/>
+    <polygon points='256,60 460,256 256,452 52,256' fill='%23ffdf00'/>
+    <circle cx='256' cy='256' r='90' fill='%23002776'/>
+  </svg>"/>
+
+  <style>
+    :root{
+      --bg:#0d1117;
+      --bg2:#161b22;
+      --accent:#1fdf64;
+      --text:#e6edf3;
+      --muted:#9ba3af;
+      --card:#1c2128;
+      --danger:#ff6b6b;
+      --focus: 3px solid #9be6a2;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,Arial,Helvetica,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    header{
+      position:fixed;top:0;left:0;right:0;
+      background:rgba(13,17,23,.96);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #222;
+      z-index:1000;
+    }
+    .container{max-width:1200px;margin:auto;padding:0 20px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:64px;
+    }
+    .logo{
+      font-weight:900;font-size:1.2rem;color:var(--accent);
+    }
+    nav.desktop {
+      display:flex;align-items:center;
+    }
+    nav.desktop a{
+      margin-left:16px;font-weight:600;color:var(--muted);
+      font-size:0.95rem;
+    }
+    nav.desktop a:hover{color:var(--text)}
+    .menu-toggle{
+      display:none;
+      background:transparent;border:0;color:var(--muted);font-size:1.2rem;
+    }
+    main{padding-top:90px}
+    .hero{
+      padding:80px 0 60px;
+      background:linear-gradient(135deg,#0d1117,#07160d);
+      text-align:center;
+    }
+    .hero h1{
+      font-size:clamp(1.8rem,4vw,3.2rem);
+      margin-bottom:12px;
+    }
+    .hero p{color:var(--muted);max-width:720px;margin:0 auto 24px}
+    .btn{
+      background:var(--accent);
+      color:#000;
+      padding:12px 20px;
+      border-radius:8px;
+      font-weight:700;
+      display:inline-block;
+      border:0;
+      cursor:pointer;
+    }
+    .btn:focus{outline:none; box-shadow:var(--focus)}
+    section{padding:56px 0}
+    h2{margin-bottom:18px;font-size:1.6rem}
+    .odds-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .odd-card{
+      background:var(--card);
+      border-radius:10px;
+      padding:16px;
+      display:flex;flex-direction:column;
+      min-height:132px;
+    }
+    .odd-card h3{font-size:1rem;margin-bottom:8px;color:var(--text)}
+    .odd{
+      display:flex;justify-content:space-between;
+      margin-top:6px;font-weight:600;color:var(--muted);
+    }
+    .odd span:last-child{color:var(--accent)}
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center;}
+    .step{background:var(--card);padding:20px;border-radius:12px}
+    table{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden}
+    th,td{padding:12px;text-align:left}
+    th{background:#222}
+    tr:not(:last-child){border-bottom:1px solid #2a2f36}
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+    .testimonial{background:var(--card);padding:18px;border-radius:12px}
+    .faq details{background:var(--card);border-radius:10px;padding:12px;margin-bottom:12px}
+    .faq summary{cursor:pointer;font-weight:600}
+    footer{background:#020409;padding:32px 0;color:var(--muted);font-size:.9rem}
+    footer .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;align-items:center}
+    .badge18{font-size:1.2rem;font-weight:900;color:#fff}
+
+    /* Accessibility */
+    a:focus, button:focus, input:focus { outline-offset:3px }
+    .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:16px;top:16px;width:auto;height:auto;padding:8px;background:#fff;color:#000;border-radius:6px}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* Mobile */
+    @media(max-width:900px){
+      nav.desktop{display:none}
+      .menu-toggle{display:block}
+    }
+    .mobile-nav {
+      display:none;
+      background:var(--bg2);
+      position:fixed;inset:64px 0 auto 0;padding:12px;border-top:1px solid #222;
+    }
+    .mobile-nav.open{display:block}
+    .consent-banner{
+      position:fixed;left:16px;right:16px;bottom:18px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.6);z-index:1200;
+      display:flex;gap:12px;align-items:center;justify-content:space-between;
+    }
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:2000}
+    .modal-panel{width:100%;max-width:420px;background:var(--bg2);padding:18px;border-radius:10px}
+    .field{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+    .field input{padding:8px;border-radius:6px;border:1px solid #333;background:transparent;color:var(--text)}
+    .error{color:var(--danger);min-height:1.1em;font-size:.95rem}
+    .muted{color:var(--muted)}
+    noscript{display:block;background:#2a2a2a;color:#fff;padding:10px;text-align:center}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Barra superior">
+      <div class="logo">GolDeBets</div>
+
+      <nav class="desktop" aria-label="Menu principal">
+        <a href="#live">Ao Vivo</a>
+        <a href="#hoje">Hoje</a>
+        <a href="#amanha">Amanhã</a>
+        <a href="#promos">Promos</a>
+        <a href="#app">App</a>
+      </nav>
+
+      <button class="menu-toggle" aria-controls="mobile-nav" aria-expanded="false" aria-label="Abrir menu">☰</button>
+    </div>
+
+    <div id="mobile-nav" class="mobile-nav" role="navigation" aria-hidden="true">
+      <a href="#live">Ao Vivo</a><br/>
+      <a href="#hoje">Hoje</a><br/>
+      <a href="#amanha">Amanhã</a><br/>
+      <a href="#promos">Promos</a><br/>
+      <a href="#app">App</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <h1 id="hero-heading">Odds Maiores que a da Várzea</h1>
+        <p>Pix rápido, bônus com regras claras. Confira termos antes de apostar.</p>
+        <button class="btn" id="btnCadastro">Cadastrar com CPF</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="odds-heading">
+      <div class="container">
+        <h2 id="odds-heading">🔥 Odds ao Vivo</h2>
+        <div class="odds-grid" id="odds" aria-live="polite" aria-atomic="true">
+          <!-- odds geradas via JS (escapadas, sem innerHTML) -->
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Como Apostar em 3 Passos</h2>
+        <div class="steps">
+          <div class="step"><div class="icon" aria-hidden="true">📝</div><strong>Cadastro 30 s</strong><div class="muted">Formulário seguro</div></div>
+          <div class="step"><div class="icon" aria-hidden="true">⚡</div><strong>Depósito Pix R$ 1</strong><div class="muted">Operado por PSPs certificados</div></div>
+          <div class="step"><div class="icon" aria-hidden="true">🎯</div><strong>Clique na odd e aposte</strong><div class="muted">Regras visíveis antes da aposta</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Comparativo de Retorno</h2>
+        <table aria-describedby="comparativo-desc">
+          <caption id="comparativo-desc" class="sr-only">Comparativo de Retorno de plataformas</caption>
+          <thead>
+            <tr><th scope="col">Plataforma</th><th scope="col">ROI / RTP</th><th scope="col">Fonte</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>GolDeBets</strong></td><td>94,2 %</td><td>RTP real*</td></tr>
+            <tr><td>Média Mercado</td><td>92 %</td><td>Relatório IBIA 2026</td></tr>
+          </tbody>
+        </table>
+        <p class="muted" style="margin-top:8px;font-size:.9rem">*Valores sujeitos a variação; ver regras e audit reports.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>O que a galera fala</h2>
+        <div class="testimonials" aria-live="polite">
+          <div class="testimonial">
+            <div class="stars" aria-hidden="true">★★★★☆</div>
+            <blockquote>“Saquei R$ 450 em 8 min”</blockquote><cite> — Carlos M.</cite>
+          </div>
+          <div class="testimonial">
+            <div class="stars" aria-hidden="true">★★★★☆</div>
+            <blockquote>“Odds maiores que na Betano”</blockquote><cite> — Rafael S.</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <details><summary>Pago imposto?</summary><div>Ganhos seguem legislação vigente. Consulte regras fiscais.</div></details>
+        <details><summary>Quais limites?</summary><div>Depósitos a partir de R$ 1. Limites de saque dependem de KYC.</div></details>
+        <details><summary>Tem cash out?</summary><div>Sim, em eventos elegíveis descritos nas regras.</div></details>
+        <details><summary>É seguro?</summary><div>Criptografia TLS, PSPs certificados e KYC. Consulte Políticas.</div></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div>
+        <div class="badge18">18+</div>
+        <div class="muted">Jogue com responsabilidade</div>
+      </div>
+      <div>
+        <div class="muted">Licença: MF/SPA sob consulta</div>
+      </div>
+      <div>
+        <a href="/privacy" class="muted">Política de Privacidade</a><br/>
+        <a href="/terms" class="muted">Termos e Condições</a>
+      </div>
+    </div>
+  </footer>
+
+  <noscript>
+    Este site requer JavaScript para funcionar corretamente. Ative o JavaScript no seu navegador.
+  </noscript>
+
+  <!-- Cookie consent (aria live region for screen readers) -->
+  <div id="consent-root" aria-live="polite"></div>
+
+  <!-- Modal / Consent / Scripts -->
+  <script>
+  (function(){
+    'use strict';
+
+    /* ---------- Dados de exemplo (normalmente vindos do backend via fetch) ---------- */
+    const jogos = [
+      { liga: "Libertadores", jogo: "Palmeiras x Flamengo", a: 1.83, e: 3.60, b: 3.40 },
+      { liga: "Brasileirão", jogo: "Grêmio x Inter", a: 2.10, e: 3.20, b: 3.10 },
+      { liga: "Brasileirão", jogo: "Corinthians x Santos", a: 1.95, e: 3.30, b: 3.80 },
+      { liga: "NBA", jogo: "Lakers x Celtics", a: 1.72, b: 2.10 },
+      { liga: "NBA", jogo: "Heat x Bulls", a: 1.88, b: 1.98 }
+    ];
+
+    /* ---------- Utilities ---------- */
+    function variarNum(v){
+      const delta = (Math.random() * 0.1) - 0.05;
+      const n = +(v + delta).toFixed(2);
+      return Math.max(1.01, n);
+    }
+    function formatOdd(n){ return Number.parseFloat(n).toFixed(2); }
+
+    /* ---------- Render odds using DOM (no innerHTML for dynamic data) ---------- */
+    function renderOdds(){
+      const box = document.getElementById('odds');
+      if(!box) return;
+      box.innerHTML = ''; // safe: only clearing a container
+      const frag = document.createDocumentFragment();
+
+      jogos.forEach(j => {
+        const card = document.createElement('article');
+        card.className = 'odd-card';
+        card.setAttribute('aria-label', `${j.jogo} — ${j.liga}`);
+
+        const h3 = document.createElement('h3');
+        h3.textContent = j.liga + ' — ' + j.jogo;
+        card.appendChild(h3);
+
+        const makeRow = (label, value) => {
+          const row = document.createElement('div');
+          row.className = 'odd';
+          const l = document.createElement('span'); l.textContent = label;
+          const v = document.createElement('span'); v.textContent = formatOdd(variarNum(value));
+          row.appendChild(l); row.appendChild(v);
+          return row;
+        };
+
+        card.appendChild(makeRow('Casa', j.a));
+        if(typeof j.e !== 'undefined') card.appendChild(makeRow('Empate', j.e));
+        card.appendChild(makeRow('Fora', j.b));
+
+        const footer = document.createElement('div');
+        footer.style.marginTop = '12px';
+        const btn = document.createElement('button');
+        btn.className = 'btn';
+        btn.type = 'button';
+        btn.textContent = 'Apostar';
+        btn.addEventListener('click', () => {
+          // Exemplo: abrir fluxo de aposta seguro (deve redirecionar para rota autenticada/backend)
+          window.location.href = '/bet?match=' + encodeURIComponent(j.jogo);
+        });
+        footer.appendChild(btn);
+        card.appendChild(footer);
+
+        frag.appendChild(card);
+      });
+
+      box.appendChild(frag);
+    }
+
+    renderOdds();
+    setInterval(renderOdds, 30000);
+
+    /* ---------- CPF Validation ---------- */
+    function validaCPF(raw){
+      if(!raw) return false;
+      const cpf = String(raw).replace(/\D/g,'');
+      if(cpf.length !== 11) return false;
+      if(/^(\d)\1+$/.test(cpf)) return false;
+      const calc = (t) => {
+        let s = 0;
+        for(let i=0;i<t;i++) s += Number(cpf.charAt(i)) * ((t+1)-i);
+        const r = (s*10) % 11;
+        return r === 10 ? 0 : r;
+      };
+      return calc(9) === Number(cpf.charAt(9)) && calc(10) === Number(cpf.charAt(10));
+    }
+
+    /* ---------- Cadastro modal (accessible) ---------- */
+    function openCadastroModal(){
+      // create modal DOM elements
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.tabIndex = -1;
+      modal.setAttribute('role','dialog');
+      modal.setAttribute('aria-modal','true');
+
+      const panel = document.createElement('div');
+      panel.className = 'modal-panel';
+
+      const title = document.createElement('h3'); title.textContent = 'Cadastro com CPF';
+      panel.appendChild(title);
+
+      const field = document.createElement('div'); field.className = 'field';
+      const label = document.createElement('label'); label.htmlFor = 'cpfInput'; label.textContent = 'CPF';
+      const input = document.createElement('input'); input.id = 'cpfInput'; input.type = 'text';
+      input.placeholder = '000.000.000-00'; input.inputMode = 'numeric';
+      field.appendChild(label); field.appendChild(input);
+
+      const checkboxWrapper = document.createElement('div'); checkboxWrapper.style.marginTop='8px';
+      const consentLabel = document.createElement('label');
+      const consentInput = document.createElement('input'); consentInput.type='checkbox'; consentInput.id='consentCb';
+      consentLabel.appendChild(consentInput);
+      consentLabel.appendChild(document.createTextNode(' Aceito a Política de Privacidade e envio do meu CPF para verificação.'));
+      checkboxWrapper.appendChild(consentLabel);
+
+      const error = document.createElement('div'); error.className='error'; error.setAttribute('aria-live','assertive');
+
+      const actions = document.createElement('div'); actions.style.display='flex'; actions.style.gap='8px'; actions.style.marginTop='12px';
+      const cancel = document.createElement('button'); cancel.type='button'; cancel.className='btn'; cancel.textContent='Cancelar';
+      cancel.style.background='#555';
+      cancel.addEventListener('click', () => { document.body.removeChild(modal); });
+      const submit = document.createElement('button'); submit.type='button'; submit.className='btn'; submit.textContent='Enviar';
+      submit.addEventListener('click', async () => {
+        const cpfVal = input.value;
+        if(!validaCPF(cpfVal)){
+          error.textContent = 'CPF inválido. Verifique e tente novamente.';
+          return;
+        }
+        if(!consentInput.checked){
+          error.textContent = 'É necessário aceitar a Política de Privacidade.';
+          return;
+        }
+        error.textContent = '';
+        submit.disabled = true;
+        try{
+          // Envie via HTTPS para backend. Não salvar em localStorage.
+          const resp = await fetch('/api/signup', {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ cpf: cpfVal, consent: true })
+          });
+          if(!resp.ok){
+            const txt = await resp.text().catch(()=>resp.statusText);
+            error.textContent = `Erro: ${resp.status} ${txt}`;
+            submit.disabled = false;
+            return;
+          }
+          // Sucesso: fechar modal e informar usuário
+          document.body.removeChild(modal);
+          alert('Cadastro recebido. Prossiga com a verificação enviada.');
+        } catch(err){
+          console.error(err);
+          error.textContent = 'Erro de rede. Tente novamente em instantes.';
+          submit.disabled = false;
+        }
+      });
+      actions.appendChild(cancel); actions.appendChild(submit);
+
+      panel.appendChild(field);
+      panel.appendChild(checkboxWrapper);
+      panel.appendChild(error);
+      panel.appendChild(actions);
+      modal.appendChild(panel);
+      document.body.appendChild(modal);
+      input.focus();
+    }
+
+    document.getElementById('btnCadastro')?.addEventListener('click', (e) => {
+      e.preventDefault(); openCadastroModal();
+    });
+
+    /* ---------- Cookie consent ---------- */
+    const CONSENT_KEY = 'gdb_cookie_consent_v1';
+    function showConsent(){
+      const existing = localStorage.getItem(CONSENT_KEY);
+      if(existing) return; // já aceitou / rejeitou
+      const banner = document.createElement('div');
+      banner.className = 'consent-banner';
+      banner.setAttribute('role','region');
+      banner.setAttribute('aria-label','Consentimento de cookies');
+
+      const text = document.createElement('div');
+      text.innerHTML = '<strong>Usamos cookies</strong> para melhorar experiência e performance. <a href="/privacy">Saiba mais</a>';
+      text.style.color = 'var(--text)';
+      const actions = document.createElement('div');
+      actions.style.display='flex'; actions.style.gap='8px';
+
+      const accept = document.createElement('button'); accept.className='btn'; accept.textContent='Aceitar';
+      const decline = document.createElement('button'); decline.className='btn'; decline.textContent='Recusar';
+      decline.style.background='#555';
+
+      accept.addEventListener('click', () => {
+        localStorage.setItem(CONSENT_KEY, JSON.stringify({consent:true, ts: Date.now()}));
+        document.body.removeChild(banner);
+      });
+      decline.addEventListener('click', () => {
+        localStorage.setItem(CONSENT_KEY, JSON.stringify({consent:false, ts: Date.now()}));
+        document.body.removeChild(banner);
+      });
+
+      actions.appendChild(decline); actions.appendChild(accept);
+      banner.appendChild(text); banner.appendChild(actions);
+      document.body.appendChild(banner);
+    }
+    showConsent();
+
+    /* ---------- Mobile menu behavior ---------- */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    if(menuToggle && mobileNav){
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        if(!expanded){
+          mobileNav.classList.add('open'); mobileNav.setAttribute('aria-hidden','false');
+        } else {
+          mobileNav.classList.remove('open'); mobileNav.setAttribute('aria-hidden','true');
+        }
+      });
+    }
+
+    /* ---------- Accessibility: focus trap for modal would be added in production ---------- */
+
+    /* ---------- Expose for dev debugging (optional) ---------- */
+    window.__GolDeBets = { renderOdds, validaCPF };
+
+  })();
+  </script>
+</body>
+</html>
